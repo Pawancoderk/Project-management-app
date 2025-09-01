@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+public/file.svg
+public/file.svg
+public/window.svg
+public/file.svg
