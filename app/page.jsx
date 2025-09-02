@@ -1,12 +1,15 @@
 
 
 import Image from "next/image";
-import logoImage from "../app/public/logo2.png"
+import logoImage from "/public/logo2.png"
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { BarChart, Calendar, ChevronRight, Layout } from "lucide-react";
+import { ArrowRight, BarChart, Calendar, ChevronRight, Layout } from "lucide-react";
 import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import faqs from "@/data/faqs"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import CompanyCarousel from "@/components/companyCarousel";
+
 
 const features = [
   {
@@ -51,34 +54,62 @@ export default function Home() {
           <Button variant={"outline"} size={"lg"} className="mr-4">Learn More</Button>
         </Link>
       </section>
-    
-    
-    {/* Card section */}
+
+
+      {/* Card section */}
       <section id="features" className="bg-gray-900 py-20 px-5">
         <div className="container">
           <h3 className="text-3xl font-bold mb-12 text-center">Key Features</h3>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">{features.map((features, index) => {
             return (
               <Card key={index} className="bg-gray-800">
-                
+
                 <CardContent className="pt-6">
-                 <features.icon className="w-12 h-12 mb-4 text-blue-300"/>
-                 <h4>{features.title}</h4>
-                 <p className="text-gray-300">{features.description}</p>
+                  <features.icon className="w-12 h-12 mb-4 text-blue-300" />
+                  <h4>{features.title}</h4>
+                  <p className="text-gray-300">{features.description}</p>
                 </CardContent>
-                
+
               </Card>
             )
           })}</div>
         </div>
       </section>
 
-      <section id="features" className="py-20">
+      <section className="py-20">
         <div className="container mx-auto">
           <h3 className="text-3xl font-bold mb-12 text-center">Trusted by Industry Leaders</h3>
-         <CompanyCarousel />
+         <CompanyCarousel/>
         </div>
       </section>
+
+      <section className="bg-gray-900 py-20 px-5">
+        <div className="container mx-auto">
+          <h3 className="text-3xl font-bold mb-12 text-center">Frequently Asked Questions</h3>
+          <Accordion type="single" collapsible className="w-full px-5" >
+            {faqs.map((faq,index) => (
+              <AccordionItem key={index} value={`item${index}`}>
+                <AccordionTrigger>{faq.question}</AccordionTrigger>
+                <AccordionContent>{faq.answer} </AccordionContent>
+              </AccordionItem>
+            ))}
+
+          </Accordion>
+        </div>
+      </section>
+
+       <section className="py-20 text-center px-5">
+        <div className="container mx-auto">
+          <h3 className="text-3xl font-bold mb-6 ">Ready to Tranform your Workflow?   </h3>
+          <p className="text-center mb-12">Join thousand of teams using ZCRUM to streamline your workflow and boost productivity.</p>
+          <Link href={"/onboarding"}>
+          <Button size={"lg"} className={"animate-bounce"} >
+            Start for Free <ArrowRight size={18} className="ml-2 h-5 w-5"/>
+          </Button>
+          </Link>
+        </div>
+      </section>
+
 
     </div>
   );

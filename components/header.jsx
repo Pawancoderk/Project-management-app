@@ -2,7 +2,7 @@ import { SignedIn, SignedOut, SignInButton } from '@clerk/nextjs'
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
-import logoImage from "../app/public/logo2.png"
+import logoImage from "/public/logo2.png"
 import { Button } from './ui/button';
 import { PenBox } from 'lucide-react';
 import UserMenu from './user-menu';
