@@ -1,12 +1,20 @@
+import { getOrganization } from '@/action/organization';
 import React from 'react'
 
-const Organization = ({params}) => {
-    const {orgId} = params
+const Organization = async ({ params }) => {
+  const { orgId } = params;
+  const organization = await getOrganization(orgId);
+
+  if(!organization){
+    return <div>Organization not found</div>
+  }
   return (
     <div>
-      <h1>Organization: {orgId}</h1>
+    <div>
+        <h1>{organization.name}&rsquo;s Projects</h1>
+    </div>
     </div>
   )
 }
 
-export default Organization
+export default Organization;
